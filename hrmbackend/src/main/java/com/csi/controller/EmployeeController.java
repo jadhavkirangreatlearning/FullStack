@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,5 +67,10 @@ public class EmployeeController {
     @GetMapping("/address")
     public ResponseEntity<String> address(){
         return ResponseEntity.ok("INDIA");
+    }
+
+    @GetMapping("/sortbyname")
+    public ResponseEntity<List<Employee>> sortByName(){
+        return ResponseEntity.ok(employeeService.findAll().stream().sorted(Comparator.comparing(Employee::getEmpName)).toList());
     }
 }
