@@ -62,4 +62,9 @@ public class EmployeeController {
         employeeService.deleteById(empId);
         return new ResponseEntity<>("Data Deleted Successfully", HttpStatus.OK);
     }
+
+    @GetMapping("/address")
+    public ResponseEntity<String> address(){
+        return ResponseEntity.ok("INDIA");
+    }
 }
